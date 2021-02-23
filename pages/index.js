@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import Link from 'next/link'
+
 
 export default function Home() {
   return (
@@ -9,57 +11,37 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
         <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+          <div className="card">
+            <div className="info">
+              <div className="cardTitle">Bulk Communication</div>
+              <hr className="lineBreak" />
+              <div className="buttonCon">
+              <button className="button">Users Completed</button>
+              <button className="button active">Users Incompleted</button>
+              </div>
+              <p className="cardTitle"> <strong>640 Users</strong> has not completed this course, send them a reminder by typing in the box below.</p>
+            </div>
+            <form className="form">
+              <input type="text" id="titleInput" name="title" placeholder="Add Title"></input>
+              <textarea id="textArea" name="textArea" placeholder="Type something.."></textarea>
+            </form>
+            <button className="button">Send Via</button>
+          </div>
         </div>
       </main>
 
       <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-        </a>
+      <Link href="/filter">
+          <a>Filter Component</a>
+        </Link>
       </footer>
 
       <style jsx>{`
+        * {
+          font-family: Arial, Helvetica, sans-serif;
+          text-decoration: none;
+        }
         .container {
           min-height: 100vh;
           padding: 0 0.5rem;
@@ -86,85 +68,75 @@ export default function Home() {
           justify-content: center;
           align-items: center;
         }
-
-        footer img {
-          margin-left: 0.5rem;
+        cardTitle {
+          font-size: 22px;
         }
-
-        footer a {
+        hr.lineBreak {
+          border-top: #f3f4f6 solid;
+          border-width: 1px 0 0;
+        }
+        .buttonCon {
+          justify-content: space-between;
+          flex-direction: row;
           display: flex;
-          justify-content: center;
-          align-items: center;
+          margin: 20px 0;
         }
-
-        a {
-          color: inherit;
+        .button {
           text-decoration: none;
+          color: #333;
+          background-color: #00EEBA;
+          padding: 8px 15px;
+          border-radius: 30px;
+          font-size: 12px;
+          border: none;
+          min-width: 116px;
         }
-
-        .title a {
-          color: #0070f3;
-          text-decoration: none;
+        .button.active {
+          background-color: #C16B75;
+          color: #fff;
         }
-
-        .title a:hover,
-        .title a:focus,
-        .title a:active {
-          text-decoration: underline;
+        .form{
+          margin-bottom: 16px;
+          display: flex;
+          flex-direction: column;
         }
-
-        .title {
-          margin: 0;
-          line-height: 1.15;
-          font-size: 4rem;
+        input#titleInput {
+          border: none;
+          padding: 10px;
+          background-color: #F3F4F6;
+          border-radius: 10px;
+          margin: 20px 0 10px;
         }
-
-        .title,
-        .description {
-          text-align: center;
+        textarea#textArea {
+          border: none;
+          padding: 10px;
+          background-color: #F3F4F6;
+          border-radius: 10px;
+          margin: 0 0 0px;
+          height: 126px;
+          resize: none;
         }
-
         .description {
           line-height: 1.5;
           font-size: 1.5rem;
         }
-
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-        }
-
         .grid {
           display: flex;
           align-items: center;
           justify-content: center;
           flex-wrap: wrap;
-
-          max-width: 800px;
-          margin-top: 3rem;
+          padding: 3rem;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: rgb(0 0 0 / 8%) 1.95px 1.95px 5.6px;
         }
 
         .card {
-          margin: 1rem;
-          flex-basis: 45%;
-          padding: 1.5rem;
+          width: 266px;
           text-align: left;
           color: inherit;
           text-decoration: none;
-          border: 1px solid #eaeaea;
-          border-radius: 10px;
           transition: color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .card:hover,
-        .card:focus,
-        .card:active {
-          color: #0070f3;
-          border-color: #0070f3;
         }
 
         .card h3 {
@@ -174,8 +146,9 @@ export default function Home() {
 
         .card p {
           margin: 0;
-          font-size: 1.25rem;
+          font-size: 12px;
           line-height: 1.5;
+          width: 266px;
         }
 
         .logo {
